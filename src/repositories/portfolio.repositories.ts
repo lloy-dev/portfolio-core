@@ -10,6 +10,7 @@ import {
   updateDoc,
   increment,
   getDoc,
+  setDoc,
 } from "firebase/firestore";
 import {
   type Experience,
@@ -21,6 +22,7 @@ import {
   type LikeProjectInput,
   type GetProjectDetailsByIdInput,
   type ProjectDetail,
+  type SetPortfolioDetailsInput,
 } from "../entities";
 
 interface PortfolioRepository {
@@ -35,6 +37,7 @@ interface PortfolioRepository {
   getProjectDetailsById(
     data: GetProjectDetailsByIdInput,
   ): Promise<Project | undefined>;
+  setPortfolioDetails(data: SetPortfolioDetailsInput): Promise<boolean>;
 }
 
 class FirestorePortfolioRepository implements PortfolioRepository {
@@ -243,6 +246,20 @@ class FirestorePortfolioRepository implements PortfolioRepository {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       return undefined;
+    }
+  }
+
+  async setPortfolioDetails(data: SetPortfolioDetailsInput): Promise<boolean> {
+    try {
+      const { id, ...restOfData } = data;
+      const portfolioRef = doc(this.firestore, this.COLLECTION_NAME, id);
+
+      await setDoc(portfolioRef, { ...restOfData });
+
+      return true;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return false;
     }
   }
 }

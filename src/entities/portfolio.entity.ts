@@ -122,6 +122,10 @@ interface GetProjectDetailsByIdInput {
   projectId: string;
 }
 
+type SetPortfolioDetailsInput = Partial<Omit<Portfolio, "id">> & {
+  id: string;
+};
+
 export type {
   Portfolio,
   SkillSet,
@@ -137,4 +141,5 @@ export type {
   GetPortfolioProjectsInput,
   LikeProjectInput,
   GetProjectDetailsByIdInput,
+  SetPortfolioDetailsInput,
 };

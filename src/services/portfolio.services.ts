@@ -7,6 +7,7 @@ import type {
   PortfolioExperienceItems,
   GetProjectDetailsByIdInput,
   Position,
+  SetPortfolioDetailsInput,
 } from "../entities";
 
 interface PortfolioService {
@@ -22,6 +23,7 @@ interface PortfolioService {
   getProjectDetailsById(
     data: GetProjectDetailsByIdInput,
   ): Promise<Project | undefined>;
+  setPortfolioDetails(data: SetPortfolioDetailsInput): Promise<boolean>;
 }
 
 class DefaultPortfolioService implements PortfolioService {
@@ -106,6 +108,10 @@ class DefaultPortfolioService implements PortfolioService {
     data: GetProjectDetailsByIdInput,
   ): Promise<Project | undefined> {
     return this.portfolioRepository.getProjectDetailsById(data);
+  }
+
+  setPortfolioDetails(data: SetPortfolioDetailsInput): Promise<boolean> {
+    return this.portfolioRepository.setPortfolioDetails(data);
   }
 }
 
