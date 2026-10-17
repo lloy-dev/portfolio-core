@@ -1,5 +1,5 @@
-import type { CreateMessageInput } from "@entities";
-import type { MessageRepository } from "@repositories";
+import type { CreateMessageInput } from "../entities";
+import type { MessageRepository } from "../repositories";
 
 interface MessageService {
   createMessage(data: CreateMessageInput): Promise<boolean>;

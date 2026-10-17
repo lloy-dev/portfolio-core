@@ -38,12 +38,6 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true,
-
-    "paths": {
-      "@entities": ["./src/entities"],
-      "@repositories": ["./src/repositories"],
-      "@services": ["./src/services"]
-    }
+    "skipLibCheck": true
   }
 }

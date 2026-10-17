@@ -1,4 +1,4 @@
-import type { PortfolioRepository } from "@repositories";
+import type { PortfolioRepository } from "../repositories";
 import type {
   LikeProjectInput,
   Project,
@@ -7,7 +7,7 @@ import type {
   PortfolioExperienceItems,
   GetProjectDetailsByIdInput,
   Position,
-} from "@entities";
+} from "../entities";
 
 interface PortfolioService {
   getPortfolioDetails(): Promise<Portfolio | undefined>;

@@ -4,7 +4,7 @@ import {
   Timestamp,
   type Firestore,
 } from "firebase/firestore";
-import type { CreateMessageInput } from "@entities";
+import type { CreateMessageInput } from "../entities";
 
 interface MessageRepository {
   createMessage(data: CreateMessageInput): Promise<boolean>;

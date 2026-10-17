@@ -21,7 +21,7 @@ import {
   type LikeProjectInput,
   type GetProjectDetailsByIdInput,
   type ProjectDetail,
-} from "@entities";
+} from "../entities";
 
 interface PortfolioRepository {
   getFirstPortfolio(): Promise<Portfolio | undefined>;
