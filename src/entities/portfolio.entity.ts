@@ -37,6 +37,7 @@ interface Experience {
   id: string;
   companyName: string;
   positions: Position[];
+  startDate: Timestamp;
 }
 
 interface ProjectDetail {
