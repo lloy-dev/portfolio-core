@@ -14,8 +14,15 @@ To install the latest version
 ```sh
 npm install git+https://github.com/lloy-dev/portfolio-core.git
 ```
+
 To install a specific version
 
 ```sh
 npm install git+https://github.com/lloy-dev/portfolio-core.git#v1.0.0
+```
+
+To test a specific branch
+
+```sh
+npm install git+https://github.com/lloy-dev/portfolio-core.git#feat/branch-name
 ```
