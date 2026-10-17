@@ -29,8 +29,8 @@ interface PortfolioService {
 class DefaultPortfolioService implements PortfolioService {
   private portfolioRepository: PortfolioRepository;
 
-  constructor(PortfolioRepository: PortfolioRepository) {
-    this.portfolioRepository = PortfolioRepository;
+  constructor(portfolioRepository: PortfolioRepository) {
+    this.portfolioRepository = portfolioRepository;
   }
 
   async getPortfolioDetails(): Promise<Portfolio | undefined> {
