@@ -25,14 +25,14 @@ interface PortfolioService {
 }
 
 class DefaultPortfolioService implements PortfolioService {
-  private PortfolioRepository: PortfolioRepository;
+  private portfolioRepository: PortfolioRepository;
 
   constructor(PortfolioRepository: PortfolioRepository) {
-    this.PortfolioRepository = PortfolioRepository;
+    this.portfolioRepository = PortfolioRepository;
   }
 
   async getPortfolioDetails(): Promise<Portfolio | undefined> {
-    const portfolio = await this.PortfolioRepository.getPortfolioById("v3");
+    const portfolio = await this.portfolioRepository.getPortfolioById("v3");
 
     if (portfolio) return portfolio;
   }
@@ -40,14 +40,14 @@ class DefaultPortfolioService implements PortfolioService {
   async getPortfolioFeaturedItems(
     portfolioId: string,
   ): Promise<PortfolioFeaturedItems> {
-    const experiences = await this.PortfolioRepository.getPortfolioExperiences({
+    const experiences = await this.portfolioRepository.getPortfolioExperiences({
       filters: { limitCount: 1 },
       portfolioId,
     });
 
     const experience = experiences.length > 0 ? experiences[0] : undefined;
 
-    const projects = await this.PortfolioRepository.getPortfolioProjects({
+    const projects = await this.portfolioRepository.getPortfolioProjects({
       filters: {
         isFeatured: true,
         orderBy: "likes",
@@ -65,7 +65,7 @@ class DefaultPortfolioService implements PortfolioService {
   async getPortfolioExperienceItems(
     portfolioId: string,
   ): Promise<PortfolioExperienceItems> {
-    const experiences = await this.PortfolioRepository.getPortfolioExperiences({
+    const experiences = await this.portfolioRepository.getPortfolioExperiences({
       portfolioId,
     });
     const remappedExperiences = experiences.map((experience) => {
@@ -80,7 +80,7 @@ class DefaultPortfolioService implements PortfolioService {
     });
 
     const skillSets =
-      await this.PortfolioRepository.getPortfolioSkillSets(portfolioId);
+      await this.portfolioRepository.getPortfolioSkillSets(portfolioId);
 
     return {
       experiences: remappedExperiences,
@@ -89,7 +89,7 @@ class DefaultPortfolioService implements PortfolioService {
   }
 
   getPortfolioProjects(portfolioId: string): Promise<Project[]> {
-    return this.PortfolioRepository.getPortfolioProjects({
+    return this.portfolioRepository.getPortfolioProjects({
       filters: {
         orderBy: "startDate",
         orderByDirection: "desc",
@@ -99,13 +99,13 @@ class DefaultPortfolioService implements PortfolioService {
   }
 
   likeProject(data: LikeProjectInput): Promise<boolean> {
-    return this.PortfolioRepository.likeProject(data);
+    return this.portfolioRepository.likeProject(data);
   }
 
   getProjectDetailsById(
     data: GetProjectDetailsByIdInput,
   ): Promise<Project | undefined> {
-    return this.PortfolioRepository.getProjectDetailsById(data);
+    return this.portfolioRepository.getProjectDetailsById(data);
   }
 }
 
