@@ -9,6 +9,7 @@ interface Portfolio {
   personalSite?: string;
   github?: string;
   gitlab?: string;
+  codeberg?: string;
   linkedin?: string;
   youtube?: string;
   instagram?: string;
