@@ -1,17 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import {
-  getDoc,
-  getDocs,
-  increment,
-  Timestamp,
-  updateDoc,
-  type Firestore,
-} from "firebase/firestore";
-import {
-  mockDocumentReference,
-  mockDocumentSnapshot,
-  mockQuerySnapshot,
-} from "../tests/mocks";
+import { getDoc, getDocs, Timestamp, type Firestore } from "firebase/firestore";
+import { mockDocumentSnapshot, mockQuerySnapshot } from "../tests/mocks";
 import type {
   Experience,
   Portfolio,
@@ -38,10 +27,6 @@ vi.mock("firebase/firestore", () => ({
 }));
 
 describe("FirestorePortfolioRepository", () => {
-  type MockDocument = {
-    id: string;
-    data: () => Record<string, unknown>;
-  };
   let repository: PortfolioRepository;
 
   const mockFirestore = {} as Firestore;
