@@ -11,7 +11,7 @@ export const mockDocumentReference = (id: string) => {
   } as DocumentReference;
 };
 
-export const mockDocumentSnapshop = <T extends { id: string }>({
+export const mockDocumentSnapshot = <T extends { id: string }>({
   id,
   ...others
 }: T) => {
