@@ -1,12 +1,8 @@
 import { vi, describe, beforeEach, it, expect } from "vitest";
-import {
-  addDoc,
-  collection,
-  Timestamp,
-  type Firestore,
-} from "firebase/firestore";
+import { addDoc, type Firestore } from "firebase/firestore";
 import type { CreateMessageInput } from "../entities";
 import { FirestoreMessageRepository, type MessageRepository } from "./";
+import { mockDocumentReference } from "../tests/mocks";
 
 vi.mock("firebase/firestore", () => ({
   collection: vi.fn(),
@@ -33,9 +29,7 @@ describe("FirestoreMessageRepository", () => {
 
   describe("createMessage", () => {
     it("should return true if successful", async () => {
-      vi.mocked(addDoc).mockResolvedValue({
-        id: "xyz",
-      } as any);
+      vi.mocked(addDoc).mockResolvedValue(mockDocumentReference("xyz"));
 
       const result = await repository.createMessage(createMessageData);
 
