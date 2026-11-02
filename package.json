@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "test": "vitest",
+    "test:run": "vitest run",
     "build": "tsc -p tsconfig.json",
     "prepare": "npm run build"
   },
