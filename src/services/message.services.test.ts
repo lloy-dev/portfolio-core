@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { MessageRepository } from "../repositories";
-import { DefaultMessageService, type MessageService } from ".";
 import type { CreateMessageInput } from "../entities";
+import { DefaultMessageService, type MessageService } from ".";
 
 describe("DefaultMessageService", () => {
   let service: MessageService;
