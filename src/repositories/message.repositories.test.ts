@@ -1,8 +1,8 @@
 import { vi, describe, beforeEach, it, expect } from "vitest";
 import { addDoc, type Firestore } from "firebase/firestore";
+import { mockDocumentReference } from "../tests/mocks";
 import type { CreateMessageInput } from "../entities";
 import { FirestoreMessageRepository, type MessageRepository } from "./";
-import { mockDocumentReference } from "../tests/mocks";
 
 vi.mock("firebase/firestore", () => ({
   collection: vi.fn(),
